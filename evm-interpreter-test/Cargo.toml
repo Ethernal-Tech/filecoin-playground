@@ -1,0 +1,17 @@
+[package]
+name = "evm_interpreter_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[patch.crates-io]
+frc42_dispatch = { git = "https://github.com/filecoin-project/filecoin-actor-utils", branch = "feat/fvm-m2" }
+frc46_token = { git = "https://github.com/filecoin-project/filecoin-actor-utils", branch = "feat/fvm-m2" }
+fvm_actor_utils = { git = "https://github.com/filecoin-project/filecoin-actor-utils", branch = "feat/fvm-m2" }
+
+[dependencies]
+fil_actor_evm = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
+bytes = { version = "1.1.0", features = ["serde"], default-features = false }
+fil_actors_runtime = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next", features = [ "test_utils" ] }
+etk-asm = "^0.2.1"
