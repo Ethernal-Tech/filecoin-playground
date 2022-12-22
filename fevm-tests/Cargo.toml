@@ -1,5 +1,5 @@
 [package]
-name = "evm_interpreter_test"
+name = "fevm-tests"
 version = "0.1.0"
 edition = "2021"
 
@@ -11,14 +11,14 @@ frc46_token = { git = "https://github.com/filecoin-project/filecoin-actor-utils"
 fvm_actor_utils = { git = "https://github.com/filecoin-project/filecoin-actor-utils", branch = "feat/fvm-m2" }
 
 [dependencies]
+test_vm = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
+fil_actors_runtime = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next", features = [ "test_utils" ] }
+fil_actor_eam = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
+fil_actor_evm = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
+fvm_shared = { version = "3.0.0-alpha.15", default-features = false }
 fvm_ipld_blockstore = { version = "0.1.1", default-features = false }
 fvm_ipld_encoding = { version = "0.3.2", default-features = false }
-fil_actor_evm = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
-fil_actor_eam = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next" }
-bytes = { version = "1.1.0", features = ["serde"], default-features = false }
-fil_actors_runtime = { git = "https://github.com/filecoin-project/builtin-actors", branch = "next", features = [ "test_utils" ] }
-fvm_shared = { version = "3.0.0-alpha.15", default-features = false }
-test_vm = { version = "10.0.0-alpha.1", path = "./test_vm" }
-etk-asm = "^0.2.1"
-num-traits = "0.2.14"
+
+serde = { version = "1.0.136", features = ["derive"] }
 hex = "0.4.3"
+num-traits = "0.2.14"
