@@ -1,0 +1,13 @@
+Function signatures:
+1271baa2: strings0in1out()
+efda80ff: strings0in2out()
+4d09eb9d: strings0in3out()
+a95e3a72: strings1in1out(string)
+65b9c0e7: strings2in1out(string,string)
+ba9512c1: strings2in2out(string,string)
+e7c0150a: uints0in1out()
+5b4c1f19: uints0in2out()
+127c7f70: uints0in3out()
+96976d81: uints1in1out(uint32)
+58e45590: uints2in1out(uint32,uint32)
+b67ce6ed: uints2in2out(uint32,uint32)
