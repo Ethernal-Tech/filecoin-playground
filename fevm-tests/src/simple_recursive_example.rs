@@ -3,7 +3,7 @@ use fvm_ipld_blockstore::MemoryBlockstore;
 use std::fs;
 use std::path::Path;
 
-use crate::utils::{deploy_contract, invoke_contract};
+use crate::vm_utils::{vm_deploy_contract, vm_invoke_contract};
 
 pub fn simple_recursive_contract_example() {
     let contract_file_path = "./contracts/Recursive.hex";
@@ -21,6 +21,6 @@ pub fn simple_recursive_contract_example() {
     params.append(&mut hex::decode("e97dcb62").unwrap());
 
     let store = MemoryBlockstore::new();
-    let (vm, account, contract_addr) = deploy_contract(&store, bytecode).unwrap();
-    invoke_contract(&vm, account, contract_addr, params);
+    let (vm, account, contract_addr) = vm_deploy_contract(&store, bytecode).unwrap();
+    vm_invoke_contract(&vm, account, contract_addr, params);
 }

@@ -11,7 +11,7 @@ use num_traits::Zero;
 #[serde(transparent)]
 struct ContractParams(#[serde(with = "strict_bytes")] pub Vec<u8>);
 
-pub fn deploy_contract<'a>(store: &'a MemoryBlockstore, bytecode: Vec<u8>) -> Option<(VM<'a>, Address, Address)>{
+pub fn vm_deploy_contract<'a>(store: &'a MemoryBlockstore, bytecode: Vec<u8>) -> Option<(VM<'a>, Address, Address)>{
     let vm = VM::new_with_singletons(store);
     let account = create_accounts(&vm, 1, TokenAmount::from_whole(10_000))[0];
 
@@ -37,10 +37,10 @@ pub fn deploy_contract<'a>(store: &'a MemoryBlockstore, bytecode: Vec<u8>) -> Op
     return Some((vm, account, create_return.robust_address));
 }
 
-pub fn invoke_contract(vm: &VM, from: Address, to: Address, contract_params: Vec<u8>) -> Option<Vec<u8>> {
+pub fn vm_invoke_contract(vm: &VM, from: Address, to: Address, contract_params: Vec<u8>) -> Option<Vec<u8>> {
     let params = Some(ContractParams(contract_params.to_vec()));
-    println!("=================================");
-    println!("params: {:?}", params);
+    // println!("=================================");
+    // println!("params: {:?}", params);
 
     let call_result = vm
         .apply_message(
@@ -61,8 +61,8 @@ pub fn invoke_contract(vm: &VM, from: Address, to: Address, contract_params: Vec
     
     // check return_value of contract call
     
-    println!("return: {:?}", &return_value);
-    println!("=================================");
+    // println!("return: {:?}", &return_value);
+    // println!("=================================");
 
     Some(return_value)
 }

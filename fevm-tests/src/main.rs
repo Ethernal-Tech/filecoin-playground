@@ -1,4 +1,5 @@
-mod utils;
+mod vm_utils;
+mod abi_utils;
 
 // mod simple_recursive_example;
 mod io_tests_example;
