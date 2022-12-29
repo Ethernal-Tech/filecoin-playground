@@ -399,6 +399,7 @@ dependencies = [
  "hex",
  "num-traits",
  "serde",
+ "serde_json",
  "test_vm",
 ]
 

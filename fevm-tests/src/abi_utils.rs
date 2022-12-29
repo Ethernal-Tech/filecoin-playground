@@ -49,7 +49,7 @@ pub fn abi_load_function(contract: &Contract, name_or_signature: &str) -> Option
 	}
 }
 
-pub fn abi_encode(function: &Function, inputs: &[&str]) -> Option<Vec<u8>> {
+pub fn abi_encode(function: &Function, inputs: &Vec<&str>) -> Option<Vec<u8>> {
 	let params: Vec<_> = function.inputs.iter().map(|param| param.kind.clone()).zip(inputs.iter().map(|v| v as &str)).collect();
     let tokens: Result<Vec<Token>, ethabi::Error> = params.iter().map(|&(ref param, value)| LenientTokenizer::tokenize(param, value)).collect::<Result<_, _>>();
 

@@ -1,6 +1,5 @@
-use fvm_ipld_blockstore::MemoryBlockstore;
 use fvm_ipld_encoding::{strict_bytes, BytesDe};
-use test_vm::{util::create_accounts, VM};
+use test_vm::{VM};
 use fil_actors_runtime::{EAM_ACTOR_ADDR};
 use fvm_shared::{econ::TokenAmount, address::Address};
 
@@ -11,13 +10,10 @@ use num_traits::Zero;
 #[serde(transparent)]
 struct ContractParams(#[serde(with = "strict_bytes")] pub Vec<u8>);
 
-pub fn vm_deploy_contract<'a>(store: &'a MemoryBlockstore, bytecode: Vec<u8>) -> Option<(VM<'a>, Address, Address)>{
-    let vm = VM::new_with_singletons(store);
-    let account = create_accounts(&vm, 1, TokenAmount::from_whole(10_000))[0];
-
+pub fn vm_deploy_contract<'a>(vm: &'a VM, bytecode: Vec<u8>, deployer_addr: Address) -> Option<Address>{
     let create_result = vm
         .apply_message(
-            account,
+            deployer_addr,
             EAM_ACTOR_ADDR,
             TokenAmount::zero(),
             fil_actor_eam::Method::Create2 as u64,
@@ -34,7 +30,7 @@ pub fn vm_deploy_contract<'a>(store: &'a MemoryBlockstore, bytecode: Vec<u8>) ->
     let create_return: fil_actor_eam::Create2Return =
         create_result.ret.deserialize().expect("failed to decode results");
     
-    return Some((vm, account, create_return.robust_address));
+    return Some(create_return.robust_address);
 }
 
 pub fn vm_invoke_contract(vm: &VM, from: Address, to: Address, contract_params: Vec<u8>) -> Option<Vec<u8>> {
