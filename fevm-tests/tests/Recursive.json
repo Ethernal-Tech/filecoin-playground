@@ -2,7 +2,7 @@
     "bytecode_file_path": "./contracts/Recursive.hex",
     "abi_file_path": "./contracts/Recursive.abi",
     "tests": [
-        { "function_name_or_signature": "enter", "inputs": [], "outputs": [] },
-        { "function_name_or_signature": "recurse", "inputs": [], "outputs": [] }
+        { "function_name_or_signature": "enter", "inputs": [], "outputs": ["0"] },
+        { "function_name_or_signature": "recurse", "inputs": [], "outputs": ["3"] }
     ]
 }

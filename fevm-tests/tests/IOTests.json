@@ -2,20 +2,20 @@
     "bytecode_file_path": "./contracts/IOTests.hex",
     "abi_file_path": "./contracts/IOTests.abi",
     "tests": [
-        { "function_name_or_signature": "uints0in1out", "inputs": [], "outputs": [] },
-        { "function_name_or_signature": "uints0in2out", "inputs": [], "outputs": [] },
-        { "function_name_or_signature": "uints0in3out", "inputs": [], "outputs": [] },
+        { "function_name_or_signature": "uints0in1out", "inputs": [], "outputs": ["5"] },
+        { "function_name_or_signature": "uints0in2out", "inputs": [], "outputs": ["5", "10"] },
+        { "function_name_or_signature": "uints0in3out", "inputs": [], "outputs": ["5", "10", "15"] },
 
-        { "function_name_or_signature": "strings0in1out", "inputs": [], "outputs": [] },
-        { "function_name_or_signature": "strings0in2out", "inputs": [], "outputs": [] },
-        { "function_name_or_signature": "strings0in3out", "inputs": [], "outputs": [] },
+        { "function_name_or_signature": "strings0in1out", "inputs": [], "outputs": ["1"] },
+        { "function_name_or_signature": "strings0in2out", "inputs": [], "outputs": ["1", "5"] },
+        { "function_name_or_signature": "strings0in3out", "inputs": [], "outputs": ["1", "5", "10"] },
 
-        { "function_name_or_signature": "uints1in1out", "inputs": ["5"], "outputs": [] },
-        { "function_name_or_signature": "uints2in2out", "inputs": ["5", "10"], "outputs": [] },
-        { "function_name_or_signature": "uints2in1out", "inputs": ["5", "10"], "outputs": [] },
+        { "function_name_or_signature": "uints1in1out", "inputs": ["5"], "outputs": ["5"] },
+        { "function_name_or_signature": "uints2in2out", "inputs": ["5", "10"], "outputs": ["5", "10"] },
+        { "function_name_or_signature": "uints2in1out", "inputs": ["5", "10"], "outputs": ["15"] },
 
-        { "function_name_or_signature": "strings1in1out", "inputs": ["1"], "outputs": [] },
-        { "function_name_or_signature": "strings2in2out", "inputs": ["1", "5"], "outputs": [] },
-        { "function_name_or_signature": "strings2in1out", "inputs": ["1", "5"], "outputs": [] }
+        { "function_name_or_signature": "strings1in1out", "inputs": ["1"], "outputs": ["1"] },
+        { "function_name_or_signature": "strings2in2out", "inputs": ["1", "5"], "outputs": ["1", "5"] },
+        { "function_name_or_signature": "strings2in1out", "inputs": ["1", "5"], "outputs": ["15"] }
     ]
 }

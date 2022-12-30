@@ -389,6 +389,7 @@ dependencies = [
 name = "fevm-tests"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "ethabi",
  "fil_actor_eam",
  "fil_actor_evm",
